@@ -56,7 +56,7 @@
     var ammoHeightData = null;
 
     var time = 0;
-    var objectTimePeriod = 3;
+    var objectTimePeriod = 0.5;
     var timeNextSpawn = time + objectTimePeriod;
     var maxNumObjects = 30;
 
@@ -107,6 +107,7 @@
       var controls = new OrbitControls(camera, renderer.domElement);
       controls.enableZoom = false;
 
+      // var geometry = new THREE.PlaneBufferGeometry(terrainWidthExtents, terrainDepthExtents, terrainWidth - 1, terrainDepth - 1);
       var geometry = new THREE.PlaneBufferGeometry(terrainWidthExtents, terrainDepthExtents, terrainWidth - 1, terrainDepth - 1);
       geometry.rotateX(- Math.PI / 2);
 
@@ -183,10 +184,10 @@
       physicsWorld.setGravity(new Ammo.btVector3(0, - 6, 0));
 
       // Create the terrain body
-
       var groundShape = createTerrainShape();
       var groundTransform = new Ammo.btTransform();
       groundTransform.setIdentity();
+
       // Shifts the terrain, since bullet re-centers it on its bounding box.
       groundTransform.setOrigin(new Ammo.btVector3(0, (terrainMaxHeight + terrainMinHeight) / 2, 0));
       var groundMass = 0;
@@ -297,7 +298,7 @@
     function generateObject() {
 
       var numTypes = 4;
-      var objectType = Math.ceil(Math.random() * numTypes);
+      // var objectType = Math.ceil(Math.random() * numTypes);
 
       var threeObject = null;
       var shape = null;
@@ -305,41 +306,12 @@
       var objectSize = 3;
       var margin = 0.05;
 
-      switch (objectType) {
-
-        case 1:
-          // Sphere
-          var radius = 1 + Math.random() * objectSize;
-          threeObject = new THREE.Mesh(new THREE.SphereBufferGeometry(radius, 20, 20), createObjectMaterial());
-          shape = new Ammo.btSphereShape(radius);
-          shape.setMargin(margin);
-          break;
-        case 2:
-          // Box
-          var sx = 1 + Math.random() * objectSize;
-          var sy = 1 + Math.random() * objectSize;
-          var sz = 1 + Math.random() * objectSize;
-          threeObject = new THREE.Mesh(new THREE.BoxBufferGeometry(sx, sy, sz, 1, 1, 1), createObjectMaterial());
-          shape = new Ammo.btBoxShape(new Ammo.btVector3(sx * 0.5, sy * 0.5, sz * 0.5));
-          shape.setMargin(margin);
-          break;
-        case 3:
-          // Cylinder
-          var radius = 1 + Math.random() * objectSize;
-          var height = 1 + Math.random() * objectSize;
-          threeObject = new THREE.Mesh(new THREE.CylinderBufferGeometry(radius, radius, height, 20, 1), createObjectMaterial());
-          shape = new Ammo.btCylinderShape(new Ammo.btVector3(radius, height * 0.5, radius));
-          shape.setMargin(margin);
-          break;
-        default:
-          // Cone
-          var radius = 1 + Math.random() * objectSize;
-          var height = 2 + Math.random() * objectSize;
-          threeObject = new THREE.Mesh(new THREE.ConeBufferGeometry(radius, height, 20, 2), createObjectMaterial());
-          shape = new Ammo.btConeShape(radius, height);
-          break;
-
-      }
+      // Создаем обьект монетки
+      var radius = 1 * objectSize;
+      var height = 0.2 * objectSize;
+      threeObject = new THREE.Mesh(new THREE.CylinderBufferGeometry(radius, radius, height, 20, 1), createObjectMaterial());
+      shape = new Ammo.btCylinderShape(new Ammo.btVector3(radius, height * 0.5, radius));
+      shape.setMargin(margin);
 
       threeObject.position.set((Math.random() - 0.5) * terrainWidth * 0.6, terrainMaxHeight + objectSize + 2, (Math.random() - 0.5) * terrainDepth * 0.6);
 
