@@ -89,6 +89,7 @@ function CannonPhysics() {
   var meshes = [];
   var meshMap = new WeakMap();
 
+
   function addMesh(mesh, mass = 0) {
     var shape = getShape(mesh.geometry);
 
@@ -156,7 +157,8 @@ function CannonPhysics() {
   //
 
   function setMeshPosition(mesh, position, index = 0) {
-		console.log(mesh, position, index);
+    console.log('mesh', mesh);
+
 
     if (mesh.isInstancedMesh) {
 			console.log(1);
@@ -169,14 +171,13 @@ function CannonPhysics() {
 			// bodies[index].velocity = new CANNON.Vec3(0, 4, 4);
 
 			bodies[index].velocity = new CANNON.Vec3(0, 5, 0);
-			bodies[index].angularVelocity = new CANNON.Vec3(20, 0, 0);
+			bodies[index].angularVelocity = new CANNON.Vec3(30, 0, 0);
 			console.log('bodies[index]', bodies[index]);
 
     } else if (mesh.isMesh) {
-			console.log(2);
-
-      var body = meshMap.get(mesh);
-      body.position.copy(position);
+			console.log('else 2');
+      // var body = meshMap.get(mesh);
+      // body.position.copy(position);
     }
   }
 
