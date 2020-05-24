@@ -28,15 +28,25 @@ function init() {
   scene = new THREE.Scene();
   scene.background = new THREE.Color(0x875c64);
 
-  var planeMaterial = new THREE.MeshLambertMaterial();
-  planeMaterial.color = new THREE.Color(0x123456);
+  // var planeMaterial = new THREE.MeshLambertMaterial();
+  // planeMaterial.color = new THREE.Color(0x123456);
+
+  // var plane = new THREE.Mesh(
+  //   new THREE.PlaneBufferGeometry(35, 35),
+  //   planeMaterial
+  // );
+  // plane.rotation.x = -Math.PI / 2;
+  // plane.receiveShadow = true;
 
   var plane = new THREE.Mesh(
-    new THREE.PlaneBufferGeometry(35, 35),
-    planeMaterial
+    new THREE.PlaneBufferGeometry(5, 5),
+    new THREE.ShadowMaterial({ color: 0x111111 })
   );
-  plane.rotation.x = -Math.PI / 2;
+  plane.rotation.x = - Math.PI / 2;
   plane.receiveShadow = true;
+  scene.add(plane);
+  physics.addMesh(plane);
+
 
   scene.add(plane);
   physics.addMesh(plane);
