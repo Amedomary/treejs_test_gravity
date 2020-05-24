@@ -67,7 +67,7 @@ function init() {
   var geometry = new THREE.CylinderBufferGeometry(0.1, 0.1, 0.015, 32);
   geometry.rotateX(Math.PI / 2);
 
-  var material = new THREE.MeshLambertMaterial(/*{ vertexColors: true }*/);
+  var material = new THREE.MeshLambertMaterial();
   var mesh = new THREE.InstancedMesh(geometry, material, 1);
   mesh.castShadow = true;
   mesh.receiveShadow = true;
@@ -86,11 +86,11 @@ function init() {
 
   // LIGHTS
 
-  var lightH = new THREE.HemisphereLight('#fb4a25', '#22210f');
-  lightH.intensity = 0.35;
-  scene.add(lightH);
+  // var lightH = new THREE.HemisphereLight('#fb4a25', '#22210f');
+  // lightH.intensity = 0.35;
+  // scene.add(lightH);
 
-  var lightD = new THREE.DirectionalLight(0xfbf24d, 0.1);
+  var lightD = new THREE.DirectionalLight(0xfb4a25, 0.1);
   lightD.position.set(5, 5, 5);
   lightD.castShadow = true;
   // lightD.shadow.camera.zoom = 2;
