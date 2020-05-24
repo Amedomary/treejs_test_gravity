@@ -82,7 +82,7 @@ function init() {
 
   var lightD = new THREE.DirectionalLight(0xfbf24d, 0.1);
   lightD.position.set(5, 5, 5);
-  // lightD.castShadow = true;
+  lightD.castShadow = true;
   // lightD.shadow.camera.zoom = 2;
   scene.add(lightD);
 
@@ -108,17 +108,17 @@ function init() {
   // );
   // scene.add(light1);
 
-  light2 = new THREE.PointLight(c2, intensity, distance, decay);
-  light2.add(new THREE.Mesh(sphereLight, new THREE.MeshBasicMaterial({ color: c2 })));
-  scene.add(light2);
+  // light2 = new THREE.PointLight(c2, intensity, distance, decay);
+  // light2.add(new THREE.Mesh(sphereLight, new THREE.MeshBasicMaterial({ color: c2 })));
+  // scene.add(light2);
 
-  light3 = new THREE.PointLight(c3, intensity, distance, decay);
-  light3.add(new THREE.Mesh(sphereLight, new THREE.MeshBasicMaterial({ color: c3 })));
-  scene.add(light3);
+  // light3 = new THREE.PointLight(c3, intensity, distance, decay);
+  // light3.add(new THREE.Mesh(sphereLight, new THREE.MeshBasicMaterial({ color: c3 })));
+  // scene.add(light3);
 
-  light4 = new THREE.PointLight(c4, intensity, distance, decay);
-  light4.add(new THREE.Mesh(sphereLight, new THREE.MeshBasicMaterial({ color: c4 })));
-  scene.add(light4);
+  // light4 = new THREE.PointLight(c4, intensity, distance, decay);
+  // light4.add(new THREE.Mesh(sphereLight, new THREE.MeshBasicMaterial({ color: c4 })));
+  // scene.add(light4);
 
   // light5 = new THREE.PointLight(c5, intensity, distance, decay);
   // light5.add(new THREE.Mesh(sphereLight, new THREE.MeshBasicMaterial({ color: c5 })));
@@ -130,14 +130,14 @@ function init() {
 
   // console.log(light1.position);
   // light1.castShadow = true;
-  light2.castShadow = true;
-  light3.castShadow = true;
-  light4.castShadow = true;
+  // light2.castShadow = true;
+  // light3.castShadow = true;
+  // light4.castShadow = true;
 
   // light1.position.set(1, 2, 1);
-  light2.position.set(1, 2, 0);
-  light3.position.set(0, 2, 1);
-  light4.position.set(0, 2, 0);
+  // light2.position.set(1, 2, 0);
+  // light3.position.set(0, 2, 1);
+  // light4.position.set(0, 2, 0);
   // light5.position.set(1, 1, 1);
   // light6.position.set(1, 1, 1);
 
