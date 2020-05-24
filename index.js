@@ -187,3 +187,4 @@ function reSpawn() {
 }
 
 window.addEventListener('keydown', reSpawn);
+window.addEventListener('touchend', reSpawn);
